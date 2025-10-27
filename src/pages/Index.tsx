@@ -117,7 +117,7 @@ const Index = () => {
             </span>
           </div>
           <div className="flex gap-6 items-center">
-            <a href="#about" className="text-foreground hover:text-primary transition-colors">О статусе</a>
+            <a href="#about" className="text-foreground hover:text-primary transition-colors">Самозанятый - кто это?</a>
             <a href="#articles" className="text-foreground hover:text-primary transition-colors">Журнал</a>
             <a href="#contracts" className="text-foreground hover:text-primary transition-colors">Договоры</a>
             <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
