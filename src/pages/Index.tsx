@@ -170,7 +170,7 @@ const Index = () => {
 
             <div id="articles">
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-3xl font-bold flex items-center gap-3">
+                <h2 className="text-3xl font-bold flex items-center gap-3 text-orange-500">
                   <span className="animate-float">📚</span>
                   Статьи
                 </h2>
