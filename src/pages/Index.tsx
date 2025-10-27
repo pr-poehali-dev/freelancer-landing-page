@@ -113,7 +113,7 @@ const Index = () => {
               <span className="text-2xl">💼</span>
             </div>
             <span className="text-2xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
-              СамоЗанят.PRO
+              Я - самозанятый
             </span>
           </div>
           <div className="flex gap-6 items-center">
