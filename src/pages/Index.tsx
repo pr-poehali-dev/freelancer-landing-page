@@ -1,4 +1,5 @@
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import NewsFeed from '@/components/NewsFeed';
 import ArticlesGallery from '@/components/ArticlesGallery';
 import AboutSection from '@/components/AboutSection';
@@ -86,13 +87,7 @@ const Index = () => {
         <AboutSection />
       </main>
 
-      <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-12 mt-24">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Я - самозанятый. Информационный портал для самозанятых граждан
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
