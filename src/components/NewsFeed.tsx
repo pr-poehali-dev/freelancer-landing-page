@@ -18,44 +18,31 @@ interface NewsFeedProps {
 
 const NewsFeed = ({ newsItems }: NewsFeedProps) => {
   return (
-    <div>
+    <div className="bg-white rounded-3xl p-6 shadow-lg">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-3xl font-bold flex items-center gap-3 text-orange-500">
-          <span className="animate-float">📰</span>
-          Новостная лента
+        <h2 className="text-2xl font-bold text-gray-900">
+          Новости
         </h2>
+        <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
       </div>
       
-      <div className="space-y-4">
+      <div className="space-y-6">
         {newsItems.map((news) => (
-          <Card
+          <div
             key={news.id}
-            className="cursor-pointer transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border-2 hover:border-primary/50 overflow-hidden group"
+            className="cursor-pointer group pb-6 border-b border-gray-100 last:border-b-0 last:pb-0"
           >
-            <div className="h-1 bg-gradient-to-r from-primary via-secondary to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            <CardContent className="p-5">
-              <div className="flex items-center gap-3 mb-3">
-                <Badge className="bg-primary/10 text-primary hover:bg-primary/20 text-xs">
-                  {news.category}
-                </Badge>
-                <span className="text-xs text-muted-foreground">{news.date}</span>
-              </div>
-              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                {news.title}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed">{news.excerpt}</p>
-              <Button variant="link" className="mt-3 text-primary p-0 h-auto text-sm">
-                Читать далее
-                <Icon name="ArrowRight" className="ml-1" size={14} />
-              </Button>
-            </CardContent>
-          </Card>
+            <h3 className="text-base font-semibold mb-2 group-hover:text-primary transition-colors leading-tight">
+              {news.title}
+            </h3>
+            <span className="text-sm text-gray-400">{news.date}</span>
+          </div>
         ))}
       </div>
 
-      <div className="mt-6 text-right">
-        <Link to="/news" className="text-primary hover:text-orange-500 hover:underline transition-all text-base font-semibold">
-          Все новости →
+      <div className="mt-6 pt-6 border-t border-gray-100">
+        <Link to="/news" className="text-gray-900 hover:text-primary transition-all text-base font-semibold underline">
+          Все новости
         </Link>
       </div>
     </div>

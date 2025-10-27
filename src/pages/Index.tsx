@@ -77,7 +77,7 @@ const Index = () => {
         </section>
 
         <section className="mb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8">
             <ArticlesGallery articles={articles} />
             <NewsFeed newsItems={newsItems} />
           </div>
