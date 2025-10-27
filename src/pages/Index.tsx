@@ -129,16 +129,7 @@ const Index = () => {
         </div>
       </header>
 
-      <main className="container mx-auto px-4 py-12 pt-32">
-        <section className="mb-12">
-          <h1 className="text-5xl font-extrabold mb-4 bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-            Новости для самозанятых
-          </h1>
-          <p className="text-lg text-muted-foreground">
-            Актуальные новости, законы и изменения для самозанятых граждан
-          </p>
-        </section>
-
+      <main className="container mx-auto px-4 py-12 pt-24">
         <section className="mb-24">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <div id="articles">
