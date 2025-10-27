@@ -3,7 +3,6 @@ import NewsFeed from '@/components/NewsFeed';
 import ArticlesGallery from '@/components/ArticlesGallery';
 import AboutSection from '@/components/AboutSection';
 import ArticlesSection from '@/components/ArticlesSection';
-import ContractsSection from '@/components/ContractsSection';
 
 const Index = () => {
   const newsItems = [
@@ -65,37 +64,6 @@ const Index = () => {
     }
   ];
 
-  const contracts = [
-    {
-      title: 'Договор на оказание услуг',
-      description: 'Универсальный договор для работы с клиентами',
-      downloads: 1245,
-      format: 'DOCX',
-      icon: 'FileText'
-    },
-    {
-      title: 'Акт выполненных работ',
-      description: 'Шаблон акта для подтверждения выполнения услуг',
-      downloads: 892,
-      format: 'DOCX',
-      icon: 'FileCheck'
-    },
-    {
-      title: 'Договор подряда',
-      description: 'Для работ с конкретным результатом',
-      downloads: 673,
-      format: 'DOCX',
-      icon: 'Hammer'
-    },
-    {
-      title: 'NDA (соглашение о конфиденциальности)',
-      description: 'Защита коммерческой тайны клиента',
-      downloads: 534,
-      format: 'PDF',
-      icon: 'Lock'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50">
       <Header />
@@ -118,7 +86,6 @@ const Index = () => {
 
         <AboutSection />
         <ArticlesSection articles={articles} />
-        <ContractsSection contracts={contracts} />
       </main>
 
       <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-12 mt-24">
