@@ -4,9 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const Index = () => {
   const [activeNews, setActiveNews] = useState(0);
+  const [income, setIncome] = useState('');
+  const [clientType, setClientType] = useState<'individual' | 'business'>('individual');
 
   const newsItems = [
     {
@@ -141,6 +145,116 @@ const Index = () => {
               Смотреть гайд
             </Button>
           </div>
+        </section>
+
+        <section className="mb-24">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+              <span className="animate-float">🧮</span>
+              Калькулятор налога
+            </h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Рассчитайте свой налог как самозанятый за несколько секунд
+            </p>
+          </div>
+
+          <Card className="max-w-2xl mx-auto border-2 shadow-xl">
+            <CardHeader>
+              <CardTitle className="text-2xl">Расчёт налога для самозанятых</CardTitle>
+              <CardDescription>
+                Введите ваш доход и выберите тип клиента для расчёта налога
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="income" className="text-base font-semibold">
+                  Доход за период (₽)
+                </Label>
+                <Input
+                  id="income"
+                  type="number"
+                  placeholder="Введите сумму дохода"
+                  value={income}
+                  onChange={(e) => setIncome(e.target.value)}
+                  className="text-lg h-12"
+                />
+              </div>
+
+              <div className="space-y-3">
+                <Label className="text-base font-semibold">Тип клиента</Label>
+                <div className="grid grid-cols-2 gap-4">
+                  <Card
+                    className={`cursor-pointer transition-all ${
+                      clientType === 'individual'
+                        ? 'border-primary border-2 bg-primary/5'
+                        : 'border-2 hover:border-primary/50'
+                    }`}
+                    onClick={() => setClientType('individual')}
+                  >
+                    <CardContent className="p-4 text-center">
+                      <div className="text-3xl mb-2">👤</div>
+                      <div className="font-semibold">Физическое лицо</div>
+                      <div className="text-sm text-muted-foreground mt-1">Налог 4%</div>
+                    </CardContent>
+                  </Card>
+                  <Card
+                    className={`cursor-pointer transition-all ${
+                      clientType === 'business'
+                        ? 'border-primary border-2 bg-primary/5'
+                        : 'border-2 hover:border-primary/50'
+                    }`}
+                    onClick={() => setClientType('business')}
+                  >
+                    <CardContent className="p-4 text-center">
+                      <div className="text-3xl mb-2">🏢</div>
+                      <div className="font-semibold">Юридическое лицо</div>
+                      <div className="text-sm text-muted-foreground mt-1">Налог 6%</div>
+                    </CardContent>
+                  </Card>
+                </div>
+              </div>
+
+              {income && (
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 rounded-2xl p-6 space-y-4 animate-fade-in border-2 border-primary/20">
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-semibold">Ставка налога:</span>
+                    <span className="text-2xl font-bold text-primary">
+                      {clientType === 'individual' ? '4%' : '6%'}
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-lg font-semibold">Сумма налога:</span>
+                    <span className="text-3xl font-bold text-primary">
+                      {(
+                        Number(income) * (clientType === 'individual' ? 0.04 : 0.06)
+                      ).toLocaleString('ru-RU')}{' '}
+                      ₽
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between pt-4 border-t-2 border-primary/20">
+                    <span className="text-lg font-semibold">На руки:</span>
+                    <span className="text-2xl font-bold text-foreground">
+                      {(
+                        Number(income) * (clientType === 'individual' ? 0.96 : 0.94)
+                      ).toLocaleString('ru-RU')}{' '}
+                      ₽
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <div className="bg-blue-50 rounded-xl p-4 flex gap-3">
+                <Icon name="Info" className="text-primary mt-1 flex-shrink-0" size={20} />
+                <div className="text-sm text-foreground">
+                  <p className="font-semibold mb-1">Важно знать:</p>
+                  <p>
+                    Максимальный годовой доход для самозанятых — 2,4 млн рублей. Налог
+                    уплачивается ежемесячно до 28 числа следующего месяца.
+                  </p>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
         </section>
 
         <section className="mb-24">
