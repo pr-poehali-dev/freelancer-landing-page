@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -152,13 +153,7 @@ const News = () => {
         </section>
       </main>
 
-      <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-12 mt-24">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-muted-foreground">
-            © 2024 Я - самозанятый. Информационный портал для самозанятых граждан
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
