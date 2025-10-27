@@ -19,7 +19,7 @@ const ContractsSection = ({ contracts }: ContractsSectionProps) => {
   return (
     <section id="contracts" className="mb-24">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+        <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
           <span className="animate-float">📄</span>
           Шаблоны документов
         </h2>
