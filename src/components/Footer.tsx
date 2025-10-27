@@ -1,12 +1,9 @@
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
 
 const Footer = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [submitted, setSubmitted] = useState(false);
 
@@ -14,15 +11,13 @@ const Footer = () => {
     e.preventDefault();
     setSubmitted(true);
     setTimeout(() => {
-      setName('');
-      setEmail('');
       setMessage('');
       setSubmitted(false);
     }, 3000);
   };
 
   return (
-    <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-16 mt-24">
+    <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
           <div className="flex flex-col items-center justify-center gap-4">
@@ -80,32 +75,12 @@ const Footer = () => {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Input
-                    type="text"
-                    placeholder="Ваше имя"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    required
-                    className="rounded-xl"
-                  />
-                </div>
-                <div>
-                  <Input
-                    type="email"
-                    placeholder="Email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    required
-                    className="rounded-xl"
-                  />
-                </div>
-                <div>
                   <Textarea
                     placeholder="Расскажите о вашем опыте использования сайта и какие темы/разделы вы хотели бы видеть..."
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
                     required
-                    rows={4}
+                    rows={6}
                     className="rounded-xl resize-none"
                   />
                 </div>

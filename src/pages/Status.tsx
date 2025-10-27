@@ -94,20 +94,11 @@ const Status = () => {
                 </li>
                 <li>
                   <a 
-                    href="#registration" 
+                    href="#rights-protection" 
                     className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-primary/10 transition-colors group text-sm"
                   >
                     <Icon name="ChevronRight" className="text-primary" size={16} />
-                    <span className="group-hover:text-primary transition-colors">Как зарегистрироваться</span>
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="#taxes" 
-                    className="flex items-center gap-2 py-2 px-3 rounded-lg hover:bg-primary/10 transition-colors group text-sm"
-                  >
-                    <Icon name="ChevronRight" className="text-primary" size={16} />
-                    <span className="group-hover:text-primary transition-colors">Налоги и оплата</span>
+                    <span className="group-hover:text-primary transition-colors">Защита прав</span>
                   </a>
                 </li>
               </ul>
@@ -115,7 +106,7 @@ const Status = () => {
           </CardContent>
         </Card>
 
-        <section id="basic-info" className="mb-16">
+        <section id="basic-info" className="mb-16 scroll-mt-24">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
               <CardTitle className="text-3xl text-orange-500 flex items-center gap-3">
@@ -134,7 +125,7 @@ const Status = () => {
           </Card>
         </section>
 
-        <section id="pros-cons" className="mb-16">
+        <section id="pros-cons" className="mb-16 scroll-mt-24">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
               <CardTitle className="text-3xl text-orange-500 flex items-center gap-3">
@@ -197,7 +188,7 @@ const Status = () => {
           </Card>
         </section>
 
-        <section id="comparison" className="mb-16">
+        <section id="comparison" className="mb-16 scroll-mt-24">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
               <CardTitle className="text-3xl text-orange-500 flex items-center gap-3">
@@ -248,7 +239,7 @@ const Status = () => {
           </Card>
         </section>
 
-        <section id="responsibility" className="mb-16">
+        <section id="responsibility" className="mb-16 scroll-mt-24">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
               <CardTitle className="text-3xl text-orange-500 flex items-center gap-3">
@@ -281,7 +272,7 @@ const Status = () => {
           </Card>
         </section>
 
-        <section id="rights-protection" className="mb-16">
+        <section id="rights-protection" className="mb-16 scroll-mt-24">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
               <CardTitle className="text-3xl text-orange-500 flex items-center gap-3">
