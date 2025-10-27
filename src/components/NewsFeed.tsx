@@ -24,9 +24,6 @@ const NewsFeed = ({ newsItems }: NewsFeedProps) => {
           <span className="animate-float">📰</span>
           Новостная лента
         </h2>
-        <Link to="/news" className="text-primary hover:text-orange-500 hover:underline transition-all text-sm font-semibold">
-          Все новости
-        </Link>
       </div>
       
       <div className="space-y-4">
@@ -54,6 +51,12 @@ const NewsFeed = ({ newsItems }: NewsFeedProps) => {
             </CardContent>
           </Card>
         ))}
+      </div>
+
+      <div className="mt-6 text-right">
+        <Link to="/news" className="text-primary hover:text-orange-500 hover:underline transition-all text-base font-semibold">
+          Все новости →
+        </Link>
       </div>
     </div>
   );
