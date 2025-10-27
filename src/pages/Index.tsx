@@ -99,7 +99,7 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-purple-50 to-pink-50">
+    <div className="min-h-screen bg-gradient-to-br from-white via-blue-50 to-cyan-50">
       <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent z-50 animate-gradient bg-[length:200%_200%]" />
       
       <header className="container mx-auto px-4 py-6">
