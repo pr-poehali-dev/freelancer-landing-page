@@ -118,7 +118,7 @@ const Index = () => {
             </span>
           </div>
           <div className="flex gap-6 items-center">
-            <a href="#about" className="text-primary hover:text-orange-500 hover:underline transition-all">Что такое самозанятость?</a>
+            <a href="#about" className="text-primary hover:text-orange-500 hover:underline transition-all">Самозанятый - кто это?</a>
             <a href="#articles" className="text-primary hover:text-orange-500 hover:underline transition-all">Статьи</a>
             <a href="#contracts" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны документов</a>
             <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
@@ -214,7 +214,7 @@ const Index = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
               <span className="animate-float">🎓</span>
-              Что такое самозанятость?
+              Самозанятый - кто это?
             </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Разбираемся в главных вопросах о статусе самозанятого
