@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import NewsFeed from '@/components/NewsFeed';
 import ArticlesGallery from '@/components/ArticlesGallery';
 import AboutSection from '@/components/AboutSection';
-import ArticlesSection from '@/components/ArticlesSection';
 
 const Index = () => {
   const newsItems = [
@@ -85,7 +84,6 @@ const Index = () => {
         </section>
 
         <AboutSection />
-        <ArticlesSection articles={articles} />
       </main>
 
       <footer className="bg-gradient-to-br from-primary/10 to-secondary/10 py-12 mt-24">
