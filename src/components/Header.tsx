@@ -23,9 +23,9 @@ const Header = () => {
                   Самозанятый - кто это?
                 </a>
                 <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border-2 border-primary/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
-                  <a href="#status" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
+                  <Link to="/status" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
                     Все о статусе
-                  </a>
+                  </Link>
                   <a href="#registration" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
                     Регистрация
                   </a>
