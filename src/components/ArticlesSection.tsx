@@ -18,7 +18,7 @@ const ArticlesSection = ({ articles }: ArticlesSectionProps) => {
   return (
     <section id="articles" className="mb-24">
       <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+        <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
           <span className="animate-float">📚</span>
           Журнал для самозанятых
         </h2>
