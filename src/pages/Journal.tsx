@@ -68,7 +68,7 @@ const Journal = () => {
       <main className="container mx-auto px-4 py-12 pt-24">
         <div className="mb-8">
           <Link to="/">
-            <Button variant="ghost" className="gap-2">
+            <Button variant="ghost" className="gap-2 text-primary hover:text-primary">
               <Icon name="ArrowLeft" size={20} />
               На главную
             </Button>
