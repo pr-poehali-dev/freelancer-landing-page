@@ -18,7 +18,22 @@ const Header = () => {
               </span>
             </Link>
             <div className="flex gap-6 items-center">
-              <a href="#about" className="text-primary hover:text-orange-500 hover:underline transition-all">Самозанятый - кто это?</a>
+              <div className="relative group">
+                <a href="#about" className="text-primary hover:text-orange-500 hover:underline transition-all cursor-pointer">
+                  Самозанятый - кто это?
+                </a>
+                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border-2 border-primary/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
+                  <a href="#status" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
+                    Все о статусе
+                  </a>
+                  <a href="#registration" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
+                    Регистрация
+                  </a>
+                  <a href="#taxes" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
+                    Налоги
+                  </a>
+                </div>
+              </div>
               <Link to="/journal" className="text-primary hover:text-orange-500 hover:underline transition-all">Журнал для самозанятых</Link>
               <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны документов</Link>
               <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
