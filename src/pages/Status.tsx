@@ -30,6 +30,61 @@ const Status = () => {
           </p>
         </div>
 
+        <Card className="mb-12 rounded-3xl border-2 bg-white shadow-lg">
+          <CardHeader>
+            <CardTitle className="text-2xl text-orange-500 flex items-center gap-2">
+              <Icon name="List" size={28} />
+              Содержание
+            </CardTitle>
+          </CardHeader>
+          <CardContent>
+            <nav className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <a 
+                href="#basic-info" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="Info" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Основная информация</span>
+              </a>
+              <a 
+                href="#pros-cons" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="Scale" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Плюсы и минусы статуса</span>
+              </a>
+              <a 
+                href="#comparison" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="GitCompare" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Сравнение с иными статусами</span>
+              </a>
+              <a 
+                href="#responsibility" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="AlertTriangle" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Ответственность</span>
+              </a>
+              <a 
+                href="#registration" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="UserPlus" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Как зарегистрироваться</span>
+              </a>
+              <a 
+                href="#taxes" 
+                className="flex items-center gap-3 p-4 rounded-xl hover:bg-primary/10 transition-colors group"
+              >
+                <Icon name="Wallet" className="text-primary group-hover:scale-110 transition-transform" size={24} />
+                <span className="text-lg font-medium group-hover:text-primary transition-colors">Налоги и оплата</span>
+              </a>
+            </nav>
+          </CardContent>
+        </Card>
+
         <section id="basic-info" className="mb-16">
           <Card className="rounded-3xl border-2 hover:shadow-xl transition-all">
             <CardHeader>
