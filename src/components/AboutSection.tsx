@@ -4,10 +4,16 @@ import Icon from '@/components/ui/icon';
 
 const AboutSection = () => {
   return (
-    <section id="about" className="mb-24">
-      <div className="text-center mb-12">
-        <h2 className="text-4xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
-          <span className="animate-float">🎓</span>
+    <section id="about" className="mb-24 relative">
+      {/* Декоративные элементы */}
+      <div className="absolute -top-20 left-10 w-40 h-40 bg-orange-200 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob"></div>
+      <div className="absolute top-40 right-10 w-40 h-40 bg-blue-200 rounded-full mix-blend-multiply filter blur-2xl opacity-20 animate-blob animation-delay-2000"></div>
+      
+      <div className="text-center mb-12 relative z-10">
+        <div className="inline-block mb-6">
+          <div className="text-6xl animate-float">🎓</div>
+        </div>
+        <h2 className="text-4xl md:text-5xl font-bold mb-4 text-orange-500">
           Самозанятый - кто это?
         </h2>
         <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -15,8 +21,8 @@ const AboutSection = () => {
         </p>
       </div>
 
-      <Tabs defaultValue="basics" className="max-w-5xl mx-auto">
-        <TabsList className="grid w-full grid-cols-4 h-auto p-2 bg-white/50 backdrop-blur-sm rounded-2xl">
+      <Tabs defaultValue="basics" className="max-w-5xl mx-auto relative z-10">
+        <TabsList className="grid w-full grid-cols-4 h-auto p-2 bg-white/80 backdrop-blur-md rounded-3xl shadow-lg border border-gray-200">
           <TabsTrigger value="basics" className="rounded-xl py-4 text-base data-[state=active]:bg-gradient-to-r data-[state=active]:from-primary data-[state=active]:to-secondary data-[state=active]:text-white">
             <Icon name="Book" className="mr-2" size={18} />
             Основы
@@ -36,7 +42,7 @@ const AboutSection = () => {
         </TabsList>
         
         <TabsContent value="basics" className="mt-8">
-          <Card className="border-2 border-primary/20 shadow-xl rounded-3xl">
+          <Card className="border-2 border-primary/20 shadow-2xl rounded-[2.5rem] hover:shadow-3xl transition-shadow duration-300">
             <CardHeader>
               <CardTitle className="text-3xl">Кто такой самозанятый?</CardTitle>
             </CardHeader>
@@ -46,12 +52,12 @@ const AboutSection = () => {
                 Это специальный налоговый режим для тех, кто оказывает услуги или продаёт товары собственного производства.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-2xl">
+                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-[1.5rem] hover:scale-105 transition-transform duration-300 border border-primary/20">
                   <Icon name="Users" className="mb-3 text-primary" size={32} />
                   <h4 className="font-semibold text-xl mb-2">Более 8 млн</h4>
                   <p className="text-muted-foreground">самозанятых в России</p>
                 </div>
-                <div className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-2xl">
+                <div className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-[1.5rem] hover:scale-105 transition-transform duration-300 border border-secondary/20">
                   <Icon name="TrendingUp" className="mb-3 text-secondary" size={32} />
                   <h4 className="font-semibold text-xl mb-2">До 2.4 млн ₽</h4>
                   <p className="text-muted-foreground">годовой доход</p>
