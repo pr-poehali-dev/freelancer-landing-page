@@ -56,30 +56,28 @@ const Header = () => {
             </div>
             
             {/* Desktop Menu */}
-            <div className="hidden lg:flex gap-6 items-center">
-              <Link 
-                to="/status" 
-                className={`transition-all ${isActive('/status') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+            <div className="hidden lg:flex gap-8 items-center">
+              <a 
+                href="#about" 
+                className="text-primary hover:text-blue-600 transition-all"
               >
-                Все о статусе
-              </Link>
-              <a href="#registration" className="text-primary hover:text-orange-500 hover:underline transition-all">Регистрация</a>
-              <a href="#taxes" className="text-primary hover:text-orange-500 hover:underline transition-all">Налоги</a>
+                Самозанятый - кто это?
+              </a>
               <Link 
                 to="/journal" 
-                className={`transition-all ${isActive('/journal') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/journal') ? 'text-blue-600' : 'text-primary hover:text-blue-600'}`}
               >
-                Журнал для самозанятых
+                Журнал
               </Link>
               <Link 
                 to="/news" 
-                className={`transition-all ${isActive('/news') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/news') ? 'text-blue-600' : 'text-primary hover:text-blue-600'}`}
               >
                 Новости
               </Link>
               <Link 
                 to="/templates" 
-                className={`transition-all ${isActive('/templates') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/templates') ? 'text-blue-600' : 'text-primary hover:text-blue-600'}`}
               >
                 Шаблоны документов
               </Link>
@@ -139,7 +137,7 @@ const Header = () => {
                 )}
               </div>
               
-              <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+              <Button className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg px-6 transition-all">
                 Войти
               </Button>
             </div>
