@@ -1,6 +1,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import Icon from '@/components/ui/icon';
+import { motion } from 'framer-motion';
 
 const AboutSection = () => {
   return (
@@ -52,16 +53,24 @@ const AboutSection = () => {
                 Это специальный налоговый режим для тех, кто оказывает услуги или продаёт товары собственного производства.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <div className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-[1.5rem] hover:scale-105 transition-transform duration-300 border border-primary/20">
+                <motion.div 
+                  whileHover={{ scale: 1.05, rotate: 1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-[1.5rem] border border-primary/20"
+                >
                   <Icon name="Users" className="mb-3 text-primary" size={32} />
                   <h4 className="font-semibold text-xl mb-2">Более 8 млн</h4>
                   <p className="text-muted-foreground">самозанятых в России</p>
-                </div>
-                <div className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-[1.5rem] hover:scale-105 transition-transform duration-300 border border-secondary/20">
+                </motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.05, rotate: -1 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-[1.5rem] border border-secondary/20"
+                >
                   <Icon name="TrendingUp" className="mb-3 text-secondary" size={32} />
                   <h4 className="font-semibold text-xl mb-2">До 2.4 млн ₽</h4>
                   <p className="text-muted-foreground">годовой доход</p>
-                </div>
+                </motion.div>
               </div>
             </CardContent>
           </Card>
@@ -74,20 +83,28 @@ const AboutSection = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20">
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20"
+                >
                   <div className="text-5xl mb-4 text-center">👤</div>
                   <h4 className="font-bold text-2xl mb-2 text-center">4%</h4>
                   <p className="text-center text-muted-foreground">
                     С доходов от физических лиц
                   </p>
-                </div>
-                <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20">
+                </motion.div>
+                <motion.div 
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20"
+                >
                   <div className="text-5xl mb-4 text-center">🏢</div>
                   <h4 className="font-bold text-2xl mb-2 text-center">6%</h4>
                   <p className="text-center text-muted-foreground">
                     С доходов от юридических лиц и ИП
                   </p>
-                </div>
+                </motion.div>
               </div>
               <div className="bg-blue-50 rounded-2xl p-6">
                 <h4 className="font-semibold text-xl mb-3 flex items-center gap-2">
@@ -118,15 +135,27 @@ const AboutSection = () => {
                   { icon: 'Zap', title: 'Быстрое начало', desc: 'Можно начать работать сразу после регистрации' },
                   { icon: 'CreditCard', title: 'Приём платежей', desc: 'От физлиц, юрлиц и ИП' }
                 ].map((benefit, idx) => (
-                  <div key={idx} className="flex items-start gap-4 p-4 hover:bg-primary/5 rounded-2xl transition-colors">
-                    <div className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0">
+                  <motion.div 
+                    key={idx}
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: idx * 0.1 }}
+                    whileHover={{ x: 8, backgroundColor: "rgba(59, 130, 246, 0.05)" }}
+                    className="flex items-start gap-4 p-4 rounded-2xl"
+                  >
+                    <motion.div 
+                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      transition={{ duration: 0.5 }}
+                      className="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center flex-shrink-0"
+                    >
                       <Icon name={benefit.icon as any} className="text-white" size={24} />
-                    </div>
+                    </motion.div>
                     <div>
                       <p className="font-semibold text-lg mb-1">{benefit.title}</p>
                       <p className="text-muted-foreground">{benefit.desc}</p>
                     </div>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </CardContent>

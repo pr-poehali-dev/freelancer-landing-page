@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const [message, setMessage] = useState('');
@@ -23,26 +24,42 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center gap-4">
             <h3 className="text-xl font-bold text-gray-700">Мы в соцсетях</h3>
             <div className="flex gap-4">
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="Send" size={24} />
-              </div>
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="MessageCircle" size={24} />
-              </div>
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="Youtube" size={24} />
-              </div>
+              </motion.div>
             </div>
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <div className="w-48 h-48">
+            <motion.div 
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="w-48 h-48"
+            >
               <img 
                 src="https://cdn.poehali.dev/files/05a57aaa-2097-4bf1-bcc9-8a05f9b76d3f.png" 
                 alt="Логотип" 
                 className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
           </div>
 
           <div className="bg-white rounded-3xl p-6 shadow-lg">
