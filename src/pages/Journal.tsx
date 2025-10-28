@@ -116,20 +116,33 @@ const Journal = () => {
         </div>
 
         <div className="flex justify-center mb-8 gap-3 flex-wrap">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className={`rounded-full px-6 py-2 transition-all ${
-                selectedCategory === category
-                  ? 'bg-primary text-white shadow-lg scale-105'
-                  : 'hover:bg-primary/10'
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
+          {categories.map((category) => {
+            const count = category === 'Все' ? articles.length : articles.filter((article) => 
+              article.tags.some(tag => {
+                if (category === 'Новичкам') return tag === 'новичкам' || tag === 'начало';
+                if (category === 'Бухгалтерия') return tag === 'бухгалтерия' || tag === 'учёт';
+                if (category === 'Маркетинг') return tag === 'маркетинг' || tag === 'продвижение';
+                if (category === 'Право') return tag === 'право' || tag === 'договоры';
+                if (category === 'Клиенты') return tag === 'клиенты';
+                return false;
+              })
+            ).length;
+            
+            return (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full px-6 py-2 transition-all ${
+                  selectedCategory === category
+                    ? 'bg-primary text-white shadow-lg scale-105'
+                    : 'hover:bg-primary/10'
+                }`}
+              >
+                {category} <span className="ml-1.5 opacity-70">({count})</span>
+              </Button>
+            );
+          })}
         </div>
 
         <section className="mb-24">

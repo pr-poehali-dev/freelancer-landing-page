@@ -124,20 +124,24 @@ const News = () => {
         </div>
 
         <div className="flex justify-center mb-8 gap-3 flex-wrap">
-          {categories.map((category) => (
-            <Button
-              key={category}
-              variant={selectedCategory === category ? "default" : "outline"}
-              onClick={() => setSelectedCategory(category)}
-              className={`rounded-full px-6 py-2 transition-all ${
-                selectedCategory === category
-                  ? 'bg-primary text-white shadow-lg scale-105'
-                  : 'hover:bg-primary/10'
-              }`}
-            >
-              {category}
-            </Button>
-          ))}
+          {categories.map((category) => {
+            const count = category === 'Все' ? newsItems.length : newsItems.filter((news) => news.category === category).length;
+            
+            return (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className={`rounded-full px-6 py-2 transition-all ${
+                  selectedCategory === category
+                    ? 'bg-primary text-white shadow-lg scale-105'
+                    : 'hover:bg-primary/10'
+                }`}
+              >
+                {category} <span className="ml-1.5 opacity-70">({count})</span>
+              </Button>
+            );
+          })}
         </div>
 
         <section className="mb-24">
