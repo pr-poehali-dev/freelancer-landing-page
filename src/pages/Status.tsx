@@ -36,17 +36,17 @@ const Status = () => {
           </Link>
         </div>
 
-        <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 flex items-center justify-center gap-2 sm:gap-3 text-orange-500">
-            <span className="animate-float text-3xl sm:text-4xl lg:text-5xl">📋</span>
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
+            <span className="animate-float">📋</span>
             Все о статусе
           </h1>
-          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto px-4">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Полная информация о статусе самозанятого в России
           </p>
         </div>
 
-        <Card className="mb-8 sm:mb-12 rounded-2xl border bg-white shadow max-w-2xl mx-auto">
+        <Card className="mb-12 rounded-2xl border bg-white shadow max-w-2xl mx-auto">
           <CardHeader className="pb-3">
             <CardTitle className="text-lg text-orange-500 flex items-center gap-2">
               <Icon name="List" size={20} />

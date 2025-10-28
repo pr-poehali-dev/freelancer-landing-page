@@ -14,13 +14,9 @@ const Journal = () => {
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [sortBy, setSortBy] = useState('date');
   const [readTimeFilter, setReadTimeFilter] = useState('Все');
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const categories = ['Все', 'Новичкам', 'Бухгалтерия', 'Маркетинг', 'Право', 'Клиенты'];
   const readTimeOptions = ['Все', 'Быстрое (<5 мин)', 'Среднее (5-8 мин)', 'Долгое (>8 мин)'];
-
-  const minSwipeDistance = 50;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -33,33 +29,6 @@ const Journal = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    
-    const distance = touchStart - touchEnd;
-    const isLeftSwipe = distance > minSwipeDistance;
-    const isRightSwipe = distance < -minSwipeDistance;
-    
-    const currentIndex = categories.indexOf(selectedCategory);
-    
-    if (isLeftSwipe && currentIndex < categories.length - 1) {
-      setSelectedCategory(categories[currentIndex + 1]);
-    }
-    
-    if (isRightSwipe && currentIndex > 0) {
-      setSelectedCategory(categories[currentIndex - 1]);
-    }
   };
 
   const articles = [
@@ -139,12 +108,12 @@ const Journal = () => {
           </Link>
         </div>
 
-        <div className="text-center mb-8 sm:mb-12">
-          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 flex items-center justify-center gap-2 sm:gap-3 text-orange-500">
-            <span className="animate-float text-3xl sm:text-4xl lg:text-5xl">📚</span>
+        <div className="text-center mb-12">
+          <h1 className="text-5xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
+            <span className="animate-float">📚</span>
             Журнал для самозанятых
           </h1>
-          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
             Полезные статьи, советы и инструкции для самозанятых
           </p>
           <div className="max-w-xl mx-auto">
@@ -161,16 +130,8 @@ const Journal = () => {
           </div>
         </div>
 
-        {/* Подсказка о свайпе для мобильных */}
-        <div className="lg:hidden text-center mb-4">
-          <p className="text-xs text-muted-foreground flex items-center justify-center gap-2">
-            <Icon name="MoveHorizontal" size={16} className="text-primary animate-pulse" />
-            Свайпайте влево/вправо для переключения категорий
-          </p>
-        </div>
-
-        <div className="flex justify-center items-center mb-6 sm:mb-8 gap-3 sm:gap-6 flex-wrap">
-          <div className="flex gap-2 sm:gap-3 flex-wrap justify-center">
+        <div className="flex justify-center items-center mb-8 gap-6 flex-wrap">
+          <div className="flex gap-3 flex-wrap">
           {categories.map((category) => {
             const count = category === 'Все' ? articles.length : articles.filter((article) => 
               article.tags.some(tag => {
@@ -188,7 +149,7 @@ const Journal = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-full px-3 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base transition-all ${
+                className={`rounded-full px-6 py-2 transition-all ${
                   selectedCategory === category
                     ? 'bg-primary text-white shadow-lg scale-105'
                     : 'hover:bg-primary/10'
@@ -200,8 +161,8 @@ const Journal = () => {
           })}
           </div>
           
-          <div className="flex items-center gap-2 border-l pl-3 sm:pl-6">
-            <span className="text-xs sm:text-sm text-muted-foreground">Сортировка:</span>
+          <div className="flex items-center gap-2 border-l pl-6">
+            <span className="text-sm text-muted-foreground">Сортировка:</span>
             <Button
               variant={sortBy === 'date' ? "default" : "outline"}
               size="sm"
@@ -221,9 +182,9 @@ const Journal = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mb-6 sm:mb-8 gap-3 sm:gap-6 flex-wrap items-center">
-          <div className="flex gap-2 sm:gap-3 flex-wrap items-center justify-center">
-            <span className="text-xs sm:text-sm text-muted-foreground font-medium">Время чтения:</span>
+        <div className="flex justify-center mb-8 gap-6 flex-wrap items-center">
+          <div className="flex gap-3 flex-wrap items-center">
+            <span className="text-sm text-muted-foreground font-medium">Время чтения:</span>
             {readTimeOptions.map((option) => {
               const count = option === 'Все' ? articles.length : articles.filter((article) => {
                 const time = parseInt(article.readTime);
@@ -239,7 +200,7 @@ const Journal = () => {
                   variant={readTimeFilter === option ? "default" : "outline"}
                   size="sm"
                   onClick={() => setReadTimeFilter(option)}
-                  className={`rounded-full text-xs sm:text-sm transition-all ${
+                  className={`rounded-full transition-all ${
                     readTimeFilter === option
                       ? 'bg-secondary text-white shadow-lg'
                       : 'hover:bg-secondary/10'
@@ -268,7 +229,7 @@ const Journal = () => {
           )}
         </div>
 
-        <section className="mb-24" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
+        <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles
               .filter((article) => {
