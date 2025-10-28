@@ -11,6 +11,9 @@ import Icon from '@/components/ui/icon';
 const Journal = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('Все');
+
+  const categories = ['Все', 'Новичкам', 'Бухгалтерия', 'Маркетинг', 'Право', 'Клиенты'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -112,15 +115,44 @@ const Journal = () => {
           </div>
         </div>
 
+        <div className="flex justify-center mb-8 gap-3 flex-wrap">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              onClick={() => setSelectedCategory(category)}
+              className={`rounded-full px-6 py-2 transition-all ${
+                selectedCategory === category
+                  ? 'bg-primary text-white shadow-lg scale-105'
+                  : 'hover:bg-primary/10'
+              }`}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
         <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles
-              .filter((article) =>
-                searchQuery === '' ||
-                article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
-                article.author.toLowerCase().includes(searchQuery.toLowerCase())
-              )
+              .filter((article) => {
+                const matchesSearch = searchQuery === '' ||
+                  article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                  article.author.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                const matchesCategory = selectedCategory === 'Все' ||
+                  article.tags.some(tag => {
+                    if (selectedCategory === 'Новичкам') return tag === 'новичкам' || tag === 'начало';
+                    if (selectedCategory === 'Бухгалтерия') return tag === 'бухгалтерия' || tag === 'учёт';
+                    if (selectedCategory === 'Маркетинг') return tag === 'маркетинг' || tag === 'продвижение';
+                    if (selectedCategory === 'Право') return tag === 'право' || tag === 'договоры';
+                    if (selectedCategory === 'Клиенты') return tag === 'клиенты';
+                    return false;
+                  });
+                
+                return matchesSearch && matchesCategory;
+              })
               .map((article, index) => (
                 <Card
                   key={index}
@@ -156,12 +188,24 @@ const Journal = () => {
                 </Card>
               ))}
           </div>
-          {articles.filter((article) =>
-            searchQuery === '' ||
-            article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
-            article.author.toLowerCase().includes(searchQuery.toLowerCase())
-          ).length === 0 && (
+          {articles.filter((article) => {
+            const matchesSearch = searchQuery === '' ||
+              article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              article.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())) ||
+              article.author.toLowerCase().includes(searchQuery.toLowerCase());
+            
+            const matchesCategory = selectedCategory === 'Все' ||
+              article.tags.some(tag => {
+                if (selectedCategory === 'Новичкам') return tag === 'новичкам' || tag === 'начало';
+                if (selectedCategory === 'Бухгалтерия') return tag === 'бухгалтерия' || tag === 'учёт';
+                if (selectedCategory === 'Маркетинг') return tag === 'маркетинг' || tag === 'продвижение';
+                if (selectedCategory === 'Право') return tag === 'право' || tag === 'договоры';
+                if (selectedCategory === 'Клиенты') return tag === 'клиенты';
+                return false;
+              });
+            
+            return matchesSearch && matchesCategory;
+          }).length === 0 && (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">По вашему запросу ничего не найдено</p>
             </div>

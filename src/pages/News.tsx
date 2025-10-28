@@ -11,6 +11,9 @@ import Icon from '@/components/ui/icon';
 const News = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState('Все');
+
+  const categories = ['Все', 'Налоги', 'Законодательство', 'Финансы', 'Статистика', 'Карьера'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -120,15 +123,36 @@ const News = () => {
           </div>
         </div>
 
+        <div className="flex justify-center mb-8 gap-3 flex-wrap">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              variant={selectedCategory === category ? "default" : "outline"}
+              onClick={() => setSelectedCategory(category)}
+              className={`rounded-full px-6 py-2 transition-all ${
+                selectedCategory === category
+                  ? 'bg-primary text-white shadow-lg scale-105'
+                  : 'hover:bg-primary/10'
+              }`}
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
         <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {newsItems
-              .filter((news) =>
-                searchQuery === '' ||
-                news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                news.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                news.category.toLowerCase().includes(searchQuery.toLowerCase())
-              )
+              .filter((news) => {
+                const matchesSearch = searchQuery === '' ||
+                  news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  news.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                  news.category.toLowerCase().includes(searchQuery.toLowerCase());
+                
+                const matchesCategory = selectedCategory === 'Все' || news.category === selectedCategory;
+                
+                return matchesSearch && matchesCategory;
+              })
               .map((news) => (
                 <Card
                   key={news.id}
@@ -154,12 +178,16 @@ const News = () => {
                 </Card>
               ))}
           </div>
-          {newsItems.filter((news) =>
-            searchQuery === '' ||
-            news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            news.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            news.category.toLowerCase().includes(searchQuery.toLowerCase())
-          ).length === 0 && (
+          {newsItems.filter((news) => {
+            const matchesSearch = searchQuery === '' ||
+              news.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              news.excerpt.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              news.category.toLowerCase().includes(searchQuery.toLowerCase());
+            
+            const matchesCategory = selectedCategory === 'Все' || news.category === selectedCategory;
+            
+            return matchesSearch && matchesCategory;
+          }).length === 0 && (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">По вашему запросу ничего не найдено</p>
             </div>
