@@ -86,8 +86,15 @@ const AboutSection = () => {
                 <motion.div 
                   whileHover={{ scale: 1.05, y: -5 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20"
+                  className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20 relative overflow-hidden"
                 >
+                  <motion.img 
+                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
+                    alt="Счастливый фрилансер"
+                    className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
                   <div className="text-5xl mb-4 text-center">👤</div>
                   <h4 className="font-bold text-2xl mb-2 text-center">4%</h4>
                   <p className="text-center text-muted-foreground">
@@ -97,8 +104,15 @@ const AboutSection = () => {
                 <motion.div 
                   whileHover={{ scale: 1.05, y: -5 }}
                   transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20"
+                  className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20 relative overflow-hidden"
                 >
+                  <motion.img 
+                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/023ed51b-a764-452a-8e89-d368efaa46eb.jpg"
+                    alt="Бег от налогов"
+                    className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
+                    animate={{ x: [-5, 5, -5] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
                   <div className="text-5xl mb-4 text-center">🏢</div>
                   <h4 className="font-bold text-2xl mb-2 text-center">6%</h4>
                   <p className="text-center text-muted-foreground">

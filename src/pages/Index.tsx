@@ -96,7 +96,7 @@ const Index = () => {
           transition={{ duration: 0.6 }}
           className="mb-12"
         >
-          <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-[2.5rem] p-8 shadow-2xl text-white text-center relative overflow-hidden">
+          <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-[2.5rem] p-8 shadow-2xl text-white relative overflow-hidden">
             {/* Декоративные геометрические фигуры */}
             <motion.div 
               animate={{ rotate: [12, 22, 12], scale: [1, 1.1, 1] }}
@@ -119,9 +119,25 @@ const Index = () => {
               className="absolute bottom-8 right-16 w-10 h-10 bg-white/10"
             />
             
-            <h1 className="text-3xl md:text-4xl font-bold mb-2 relative z-10">
-              Подходит ли вам статус самозанятого?
-            </h1>
+            <div className="flex items-center justify-center gap-8 flex-wrap relative z-10">
+              <motion.img 
+                src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
+                alt="Веселый фрилансер"
+                className="w-32 h-32 object-contain"
+                animate={{ y: [0, -10, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              />
+              <h1 className="text-3xl md:text-4xl font-bold">
+                Подходит ли вам статус самозанятого?
+              </h1>
+              <motion.img 
+                src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/775ac872-d6e1-4a8d-942f-f81775801bf4.jpg"
+                alt="Думающий персонаж"
+                className="w-32 h-32 object-contain"
+                animate={{ rotate: [-5, 5, -5] }}
+                transition={{ duration: 3, repeat: Infinity }}
+              />
+            </div>
           </div>
         </motion.section>
 
