@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
 
 const Header = () => {
+  const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -12,6 +13,8 @@ const Header = () => {
     const saved = localStorage.getItem('searchHistory');
     return saved ? JSON.parse(saved) : [];
   });
+
+  const isActive = (path: string) => location.pathname === path;
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,12 +57,32 @@ const Header = () => {
             
             {/* Desktop Menu */}
             <div className="hidden lg:flex gap-6 items-center">
-              <Link to="/status" className="text-primary hover:text-orange-500 hover:underline transition-all">Все о статусе</Link>
+              <Link 
+                to="/status" 
+                className={`transition-all ${isActive('/status') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+              >
+                Все о статусе
+              </Link>
               <a href="#registration" className="text-primary hover:text-orange-500 hover:underline transition-all">Регистрация</a>
               <a href="#taxes" className="text-primary hover:text-orange-500 hover:underline transition-all">Налоги</a>
-              <Link to="/journal" className="text-primary hover:text-orange-500 hover:underline transition-all">Журнал для самозанятых</Link>
-              <Link to="/news" className="text-primary hover:text-orange-500 hover:underline transition-all">Новости</Link>
-              <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны документов</Link>
+              <Link 
+                to="/journal" 
+                className={`transition-all ${isActive('/journal') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+              >
+                Журнал для самозанятых
+              </Link>
+              <Link 
+                to="/news" 
+                className={`transition-all ${isActive('/news') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+              >
+                Новости
+              </Link>
+              <Link 
+                to="/templates" 
+                className={`transition-all ${isActive('/templates') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+              >
+                Шаблоны документов
+              </Link>
               
               <div className="relative">
                 <Button
@@ -139,7 +162,11 @@ const Header = () => {
         {mobileMenuOpen && (
           <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg animate-fade-in">
             <div className="container mx-auto px-4 py-4 space-y-3">
-              <Link to="/status" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
+              <Link 
+                to="/status" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/status') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+              >
                 Все о статусе
               </Link>
               <a href="#registration" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
@@ -148,13 +175,25 @@ const Header = () => {
               <a href="#taxes" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
                 Налоги
               </a>
-              <Link to="/journal" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
+              <Link 
+                to="/journal" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/journal') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+              >
                 Журнал для самозанятых
               </Link>
-              <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
+              <Link 
+                to="/news" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/news') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+              >
                 Новости
               </Link>
-              <Link to="/templates" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
+              <Link 
+                to="/templates" 
+                onClick={() => setMobileMenuOpen(false)} 
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/templates') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+              >
                 Шаблоны документов
               </Link>
               <Button className="w-full bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
