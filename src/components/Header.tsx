@@ -7,12 +7,29 @@ import Icon from '@/components/ui/icon';
 const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [searchHistory, setSearchHistory] = useState<string[]>(() => {
+    const saved = localStorage.getItem('searchHistory');
+    return saved ? JSON.parse(saved) : [];
+  });
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
+      const newHistory = [searchQuery.trim(), ...searchHistory.filter(item => item !== searchQuery.trim())].slice(0, 5);
+      setSearchHistory(newHistory);
+      localStorage.setItem('searchHistory', JSON.stringify(newHistory));
       window.location.href = `/journal?search=${encodeURIComponent(searchQuery)}`;
     }
+  };
+
+  const handleHistoryClick = (query: string) => {
+    setSearchQuery(query);
+    window.location.href = `/journal?search=${encodeURIComponent(query)}`;
+  };
+
+  const clearHistory = () => {
+    setSearchHistory([]);
+    localStorage.removeItem('searchHistory');
   };
 
   return (
@@ -57,13 +74,13 @@ const Header = () => {
                   onClick={() => setSearchOpen(!searchOpen)}
                   className="hover:bg-primary/10 transition-all"
                 >
-                  <Icon name="Search" size={28} className="text-orange-500" />
+                  <Icon name="Search" size={32} className="text-orange-500" strokeWidth={2.5} />
                 </Button>
                 
                 {searchOpen && (
                   <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border-2 border-primary/10 p-4 animate-fade-in">
                     <form onSubmit={handleSearch}>
-                      <div className="relative">
+                      <div className="relative mb-3">
                         <Icon name="Search" className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
                         <Input
                           type="text"
@@ -75,6 +92,32 @@ const Header = () => {
                         />
                       </div>
                     </form>
+                    
+                    {searchHistory.length > 0 && (
+                      <div className="mt-4 pt-4 border-t border-gray-200">
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-xs text-muted-foreground font-medium">Последние запросы</span>
+                          <button
+                            onClick={clearHistory}
+                            className="text-xs text-primary hover:text-orange-500 transition-colors"
+                          >
+                            Очистить
+                          </button>
+                        </div>
+                        <div className="space-y-1">
+                          {searchHistory.map((query, index) => (
+                            <button
+                              key={index}
+                              onClick={() => handleHistoryClick(query)}
+                              className="w-full text-left px-3 py-2 rounded-lg hover:bg-primary/5 transition-all flex items-center gap-2 group"
+                            >
+                              <Icon name="Clock" size={14} className="text-muted-foreground group-hover:text-primary transition-colors" />
+                              <span className="text-sm text-gray-700 group-hover:text-primary transition-colors">{query}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
