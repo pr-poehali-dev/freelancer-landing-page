@@ -59,7 +59,7 @@ const Header = () => {
             <div className="hidden lg:flex gap-6 items-center">
               <Link 
                 to="/status" 
-                className={`transition-all ${isActive('/status') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/status') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
               >
                 Все о статусе
               </Link>
@@ -67,19 +67,19 @@ const Header = () => {
               <a href="#taxes" className="text-primary hover:text-orange-500 hover:underline transition-all">Налоги</a>
               <Link 
                 to="/journal" 
-                className={`transition-all ${isActive('/journal') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/journal') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
               >
                 Журнал для самозанятых
               </Link>
               <Link 
                 to="/news" 
-                className={`transition-all ${isActive('/news') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/news') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
               >
                 Новости
               </Link>
               <Link 
                 to="/templates" 
-                className={`transition-all ${isActive('/templates') ? 'text-orange-500 font-semibold underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
+                className={`transition-all ${isActive('/templates') ? 'text-orange-500 underline' : 'text-primary hover:text-orange-500 hover:underline'}`}
               >
                 Шаблоны документов
               </Link>
@@ -165,7 +165,7 @@ const Header = () => {
               <Link 
                 to="/status" 
                 onClick={() => setMobileMenuOpen(false)} 
-                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/status') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/status') ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
               >
                 Все о статусе
               </Link>
@@ -178,21 +178,21 @@ const Header = () => {
               <Link 
                 to="/journal" 
                 onClick={() => setMobileMenuOpen(false)} 
-                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/journal') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/journal') ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
               >
                 Журнал для самозанятых
               </Link>
               <Link 
                 to="/news" 
                 onClick={() => setMobileMenuOpen(false)} 
-                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/news') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/news') ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
               >
                 Новости
               </Link>
               <Link 
                 to="/templates" 
                 onClick={() => setMobileMenuOpen(false)} 
-                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/templates') ? 'bg-primary text-white font-semibold' : 'text-primary hover:bg-primary hover:text-white'}`}
+                className={`block px-4 py-3 rounded-xl transition-all ${isActive('/templates') ? 'bg-primary text-white' : 'text-primary hover:bg-primary hover:text-white'}`}
               >
                 Шаблоны документов
               </Link>
