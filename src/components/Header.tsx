@@ -54,23 +54,11 @@ const Header = () => {
             
             {/* Desktop Menu */}
             <div className="hidden lg:flex gap-6 items-center">
-              <div className="relative group">
-                <a href="#about" className="text-primary hover:text-orange-500 hover:underline transition-all cursor-pointer">
-                  Самозанятый - кто это?
-                </a>
-                <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-2xl shadow-2xl border-2 border-primary/10 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 overflow-hidden">
-                  <Link to="/status" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
-                    Все о статусе
-                  </Link>
-                  <a href="#registration" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
-                    Регистрация
-                  </a>
-                  <a href="#taxes" className="block px-6 py-3 text-primary hover:bg-primary hover:text-white transition-all">
-                    Налоги
-                  </a>
-                </div>
-              </div>
+              <Link to="/status" className="text-primary hover:text-orange-500 hover:underline transition-all">Все о статусе</Link>
+              <a href="#registration" className="text-primary hover:text-orange-500 hover:underline transition-all">Регистрация</a>
+              <a href="#taxes" className="text-primary hover:text-orange-500 hover:underline transition-all">Налоги</a>
               <Link to="/journal" className="text-primary hover:text-orange-500 hover:underline transition-all">Журнал для самозанятых</Link>
+              <Link to="/news" className="text-primary hover:text-orange-500 hover:underline transition-all">Новости</Link>
               <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны документов</Link>
               
               <div className="relative">
@@ -162,6 +150,9 @@ const Header = () => {
               </a>
               <Link to="/journal" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
                 Журнал для самозанятых
+              </Link>
+              <Link to="/news" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
+                Новости
               </Link>
               <Link to="/templates" onClick={() => setMobileMenuOpen(false)} className="block px-4 py-3 text-primary hover:bg-primary hover:text-white rounded-xl transition-all">
                 Шаблоны документов
