@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import Icon from '@/components/ui/icon';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const [message, setMessage] = useState('');
@@ -23,15 +24,27 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center gap-4">
             <h3 className="text-xl font-bold text-gray-700">Мы в соцсетях</h3>
             <div className="flex gap-4">
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="Send" size={24} />
-              </div>
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: -5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="MessageCircle" size={24} />
-              </div>
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+              </motion.div>
+              <motion.div 
+                whileHover={{ scale: 1.2, rotate: 5 }}
+                whileTap={{ scale: 0.9 }}
+                className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md cursor-pointer"
+              >
                 <Icon name="Youtube" size={24} />
-              </div>
+              </motion.div>
             </div>
           </div>
 
