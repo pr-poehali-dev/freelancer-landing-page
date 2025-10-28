@@ -18,12 +18,12 @@ interface NewsFeedProps {
 
 const NewsFeed = ({ newsItems }: NewsFeedProps) => {
   return (
-    <div className="bg-white rounded-[2.5rem] p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group">
+    <div className="bg-white rounded-[2.5rem] p-8 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group h-full flex flex-col">
       {/* Декоративные элементы */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-100 rounded-full translate-y-1/2 -translate-x-1/2 opacity-50"></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 flex-1 flex flex-col">
         <div className="flex items-center justify-between mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
             Новости
@@ -31,7 +31,7 @@ const NewsFeed = ({ newsItems }: NewsFeedProps) => {
           <div className="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
         </div>
         
-        <div className="space-y-6">
+        <div className="space-y-6 flex-1">
           {newsItems.map((news, index) => (
             <div
               key={news.id}

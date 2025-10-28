@@ -30,7 +30,7 @@ const ArticlesGallery = ({ articles }: ArticlesGalleryProps) => {
   const article = articles[currentIndex];
 
   return (
-    <div id="articles" className="bg-gradient-to-br from-blue-500 to-orange-500 rounded-[2.5rem] p-8 md:p-12 shadow-xl text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-500">
+    <div id="articles" className="bg-gradient-to-br from-blue-500 to-orange-500 rounded-[2.5rem] p-8 md:p-12 shadow-xl text-white relative overflow-hidden group hover:shadow-2xl transition-all duration-500 h-full flex flex-col">
       {/* Анимированные декоративные элементы */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
       <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2 group-hover:scale-110 transition-transform duration-700"></div>
@@ -40,7 +40,7 @@ const ArticlesGallery = ({ articles }: ArticlesGalleryProps) => {
       <div className="absolute bottom-1/4 left-16 w-16 h-16 bg-white/5 rounded-2xl -rotate-12 animate-float" style={{animationDelay: '1s'}}></div>
       <div className="absolute top-1/2 right-1/3 w-12 h-12 border-4 border-white/10 rounded-full animate-float" style={{animationDelay: '2s'}}></div>
       
-      <div className="relative z-10">
+      <div className="relative z-10 flex-1 flex flex-col">
         <div className="mb-4">
           <span className="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold backdrop-blur-sm">
             {article.tags[0]}
@@ -62,7 +62,7 @@ const ArticlesGallery = ({ articles }: ArticlesGalleryProps) => {
           </div>
         </div>
 
-        <div className="flex gap-2">
+        <div className="flex gap-2 mt-auto">
           {articles.map((_, index) => (
             <button
               key={index}
