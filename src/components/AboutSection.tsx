@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import Icon from '@/components/ui/icon';
 import { motion } from 'framer-motion';
 
@@ -60,24 +61,38 @@ const AboutSection = () => {
                 Это специальный налоговый режим для тех, кто оказывает услуги или продаёт товары собственного производства.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                <motion.div 
-                  whileHover={{ scale: 1.05, rotate: 1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-[1.5rem] border border-primary/20"
-                >
-                  <Icon name="Users" className="mb-3 text-primary" size={32} />
-                  <h4 className="font-semibold text-xl mb-2">Более 8 млн</h4>
-                  <p className="text-muted-foreground">самозанятых в России</p>
-                </motion.div>
-                <motion.div 
-                  whileHover={{ scale: 1.05, rotate: -1 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-[1.5rem] border border-secondary/20"
-                >
-                  <Icon name="TrendingUp" className="mb-3 text-secondary" size={32} />
-                  <h4 className="font-semibold text-xl mb-2">До 2.4 млн ₽</h4>
-                  <p className="text-muted-foreground">годовой доход</p>
-                </motion.div>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.div 
+                      whileHover={{ scale: 1.05, rotate: 1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-gradient-to-br from-primary/10 to-secondary/10 p-6 rounded-[1.5rem] border border-primary/20 cursor-help"
+                    >
+                      <Icon name="Users" className="mb-3 text-primary" size={32} />
+                      <h4 className="font-semibold text-xl mb-2">Более 8 млн</h4>
+                      <p className="text-muted-foreground">самозанятых в России</p>
+                    </motion.div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-orange-500 text-white border-orange-600">
+                    <p>🎉 Это больше, чем население Москвы и Питера вместе взятых!</p>
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.div 
+                      whileHover={{ scale: 1.05, rotate: -1 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-gradient-to-br from-secondary/10 to-accent/10 p-6 rounded-[1.5rem] border border-secondary/20 cursor-help"
+                    >
+                      <Icon name="TrendingUp" className="mb-3 text-secondary" size={32} />
+                      <h4 className="font-semibold text-xl mb-2">До 2.4 млн ₽</h4>
+                      <p className="text-muted-foreground">годовой доход</p>
+                    </motion.div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-blue-500 text-white border-blue-600">
+                    <p>💰 Это 200 000 ₽ в месяц. Неплохо для «себя на себя»!</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
             </CardContent>
           </Card>
@@ -90,42 +105,56 @@ const AboutSection = () => {
             </CardHeader>
             <CardContent className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <motion.div 
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20 relative overflow-hidden"
-                >
-                  <motion.img 
-                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
-                    alt="Счастливый фрилансер"
-                    className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 3, repeat: Infinity }}
-                  />
-                  <div className="text-5xl mb-4 text-center">👤</div>
-                  <h4 className="font-bold text-2xl mb-2 text-center">4%</h4>
-                  <p className="text-center text-muted-foreground">
-                    С доходов от физических лиц
-                  </p>
-                </motion.div>
-                <motion.div 
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                  className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20 relative overflow-hidden"
-                >
-                  <motion.img 
-                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/023ed51b-a764-452a-8e89-d368efaa46eb.jpg"
-                    alt="Бег от налогов"
-                    className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
-                    animate={{ x: [-5, 5, -5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                  />
-                  <div className="text-5xl mb-4 text-center">🏢</div>
-                  <h4 className="font-bold text-2xl mb-2 text-center">6%</h4>
-                  <p className="text-center text-muted-foreground">
-                    С доходов от юридических лиц и ИП
-                  </p>
-                </motion.div>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.div 
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-gradient-to-br from-blue-50 to-cyan-50 p-8 rounded-2xl border-2 border-primary/20 relative overflow-hidden cursor-help"
+                    >
+                      <motion.img 
+                        src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
+                        alt="Счастливый фрилансер"
+                        className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
+                        animate={{ rotate: [0, 10, -10, 0] }}
+                        transition={{ duration: 3, repeat: Infinity }}
+                      />
+                      <div className="text-5xl mb-4 text-center">👤</div>
+                      <h4 className="font-bold text-2xl mb-2 text-center">4%</h4>
+                      <p className="text-center text-muted-foreground">
+                        С доходов от физических лиц
+                      </p>
+                    </motion.div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white border-0">
+                    <p>😎 Заработали 10 000 ₽? Отдадите всего 400 ₽! Остальное — ваше!</p>
+                  </TooltipContent>
+                </Tooltip>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <motion.div 
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="bg-gradient-to-br from-purple-50 to-pink-50 p-8 rounded-2xl border-2 border-secondary/20 relative overflow-hidden cursor-help"
+                    >
+                      <motion.img 
+                        src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/023ed51b-a764-452a-8e89-d368efaa46eb.jpg"
+                        alt="Бег от налогов"
+                        className="absolute top-2 right-2 w-16 h-16 object-contain opacity-40"
+                        animate={{ x: [-5, 5, -5] }}
+                        transition={{ duration: 2, repeat: Infinity }}
+                      />
+                      <div className="text-5xl mb-4 text-center">🏢</div>
+                      <h4 className="font-bold text-2xl mb-2 text-center">6%</h4>
+                      <p className="text-center text-muted-foreground">
+                        С доходов от юридических лиц и ИП
+                      </p>
+                    </motion.div>
+                  </TooltipTrigger>
+                  <TooltipContent className="bg-gradient-to-r from-purple-500 to-pink-500 text-white border-0">
+                    <p>🏢 С компаний чуть больше, но всё равно меньше, чем на ИП!</p>
+                  </TooltipContent>
+                </Tooltip>
               </div>
               <div className="bg-blue-50 rounded-2xl p-6 relative overflow-hidden">
                 <motion.div 

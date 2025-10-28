@@ -3,6 +3,7 @@ import Footer from '@/components/Footer';
 import NewsFeed from '@/components/NewsFeed';
 import ArticlesGallery from '@/components/ArticlesGallery';
 import AboutSection from '@/components/AboutSection';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Index = () => {
@@ -120,23 +121,37 @@ const Index = () => {
             />
             
             <div className="flex items-center justify-center gap-8 flex-wrap relative z-10">
-              <motion.img 
-                src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
-                alt="Веселый фрилансер"
-                className="w-32 h-32 object-contain"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <motion.img 
+                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
+                    alt="Веселый фрилансер"
+                    className="w-32 h-32 object-contain cursor-help"
+                    animate={{ y: [0, -10, 0] }}
+                    transition={{ duration: 2, repeat: Infinity }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent className="bg-green-500 text-white border-0">
+                  <p>🤑 Я когда получаю деньги без задержек!</p>
+                </TooltipContent>
+              </Tooltip>
               <h1 className="text-3xl md:text-4xl font-bold">
                 Подходит ли вам статус самозанятого?
               </h1>
-              <motion.img 
-                src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/775ac872-d6e1-4a8d-942f-f81775801bf4.jpg"
-                alt="Думающий персонаж"
-                className="w-32 h-32 object-contain"
-                animate={{ rotate: [-5, 5, -5] }}
-                transition={{ duration: 3, repeat: Infinity }}
-              />
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <motion.img 
+                    src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/775ac872-d6e1-4a8d-942f-f81775801bf4.jpg"
+                    alt="Думающий персонаж"
+                    className="w-32 h-32 object-contain cursor-help"
+                    animate={{ rotate: [-5, 5, -5] }}
+                    transition={{ duration: 3, repeat: Infinity }}
+                  />
+                </TooltipTrigger>
+                <TooltipContent className="bg-yellow-500 text-white border-0">
+                  <p>🤔 4% или 6%? Хмм... А может и то, и то?</p>
+                </TooltipContent>
+              </Tooltip>
             </div>
           </div>
         </motion.section>
