@@ -23,30 +23,15 @@ const Footer = () => {
           <div className="flex flex-col items-center justify-center gap-4">
             <h3 className="text-xl font-bold text-gray-700">Мы в соцсетях</h3>
             <div className="flex gap-4">
-              <a 
-                href="https://t.me/yourtelegram" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-xl hover:scale-110"
-              >
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
                 <Icon name="Send" size={24} />
-              </a>
-              <a 
-                href="https://vk.com/yourvk" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-xl hover:scale-110"
-              >
+              </div>
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
                 <Icon name="MessageCircle" size={24} />
-              </a>
-              <a 
-                href="https://youtube.com/@yourchannel" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="w-14 h-14 bg-white rounded-full flex items-center justify-center hover:bg-primary hover:text-white transition-all shadow-md hover:shadow-xl hover:scale-110"
-              >
+              </div>
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
                 <Icon name="Youtube" size={24} />
-              </a>
+              </div>
             </div>
           </div>
 
