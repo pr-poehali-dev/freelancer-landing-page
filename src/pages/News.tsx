@@ -118,12 +118,12 @@ const News = () => {
           </Link>
         </div>
 
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold mb-4 flex items-center justify-center gap-3 text-orange-500">
-            <span className="animate-float">📰</span>
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4 flex items-center justify-center gap-2 sm:gap-3 text-orange-500">
+            <span className="animate-float text-3xl sm:text-4xl lg:text-5xl">📰</span>
             Новости
           </h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+          <p className="text-base sm:text-xl text-muted-foreground max-w-3xl mx-auto mb-6 sm:mb-8 px-4">
             Актуальные новости для самозанятых граждан
           </p>
           <div className="max-w-xl mx-auto">
@@ -140,8 +140,8 @@ const News = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center mb-8 gap-6 flex-wrap">
-          <div className="flex gap-3 flex-wrap">
+        <div className="flex justify-center items-center mb-6 sm:mb-8 gap-3 sm:gap-6 flex-wrap">
+          <div className="flex gap-2 sm:gap-3 flex-wrap justify-center">
           {categories.map((category) => {
             const count = category === 'Все' ? newsItems.length : newsItems.filter((news) => news.category === category).length;
             
@@ -150,7 +150,7 @@ const News = () => {
                 key={category}
                 variant={selectedCategory === category ? "default" : "outline"}
                 onClick={() => setSelectedCategory(category)}
-                className={`rounded-full px-6 py-2 transition-all ${
+                className={`rounded-full px-3 sm:px-6 py-1.5 sm:py-2 text-sm sm:text-base transition-all ${
                   selectedCategory === category
                     ? 'bg-primary text-white shadow-lg scale-105'
                     : 'hover:bg-primary/10'
@@ -162,8 +162,8 @@ const News = () => {
           })}
           </div>
           
-          <div className="flex items-center gap-2 border-l pl-6">
-            <span className="text-sm text-muted-foreground">Сортировка:</span>
+          <div className="flex items-center gap-2 border-l pl-3 sm:pl-6">
+            <span className="text-xs sm:text-sm text-muted-foreground">Сортировка:</span>
             <Button
               variant={sortBy === 'date' ? "default" : "outline"}
               size="sm"

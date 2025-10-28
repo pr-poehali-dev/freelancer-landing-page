@@ -69,19 +69,20 @@ const Index = () => {
       <Header />
 
       <main className="container mx-auto px-4 py-12 pt-24">
-        <section className="mb-12">
-          <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-3xl p-8 shadow-2xl text-white text-center animate-fade-in">
-            <h1 className="text-3xl md:text-4xl font-bold mb-2">
+        <section className="mb-8 sm:mb-12">
+          <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-2xl text-white text-center animate-fade-in">
+            <h1 className="text-xl sm:text-3xl md:text-4xl font-bold mb-2">
               Подходит ли вам статус самозанятого?
             </h1>
           </div>
         </section>
 
-        <section className="mb-24">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8">
-            <ArticlesGallery articles={articles} />
-            <NewsFeed newsItems={newsItems} />
-          </div>
+        <section className="mb-8 sm:mb-12">
+          <NewsFeed newsItems={newsItems} />
+        </section>
+
+        <section className="mb-16 sm:mb-24">
+          <ArticlesGallery articles={articles} />
         </section>
 
         <AboutSection />
