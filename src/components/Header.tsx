@@ -57,7 +57,7 @@ const Header = () => {
                   onClick={() => setSearchOpen(!searchOpen)}
                   className="hover:bg-primary/10 transition-all"
                 >
-                  <Icon name="Search" size={20} />
+                  <Icon name="Search" size={28} className="text-orange-500" />
                 </Button>
                 
                 {searchOpen && (
