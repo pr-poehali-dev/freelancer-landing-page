@@ -12,6 +12,7 @@ const Journal = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Все');
+  const [sortBy, setSortBy] = useState('date');
 
   const categories = ['Все', 'Новичкам', 'Бухгалтерия', 'Маркетинг', 'Право', 'Клиенты'];
 
@@ -33,7 +34,9 @@ const Journal = () => {
       title: '10 ошибок начинающих самозанятых',
       author: 'Мария Петрова',
       date: '22 октября',
+      dateValue: '2024-10-22',
       readTime: '5 мин',
+      views: 1250,
       tags: ['новичкам', 'ошибки'],
       image: '📊'
     },
@@ -41,7 +44,9 @@ const Journal = () => {
       title: 'Как вести учёт доходов и расходов',
       author: 'Иван Смирнов',
       date: '18 октября',
+      dateValue: '2024-10-18',
       readTime: '8 мин',
+      views: 890,
       tags: ['бухгалтерия', 'учёт'],
       image: '💼'
     },
@@ -49,7 +54,9 @@ const Journal = () => {
       title: 'Маркетинг для самозанятых: первые шаги',
       author: 'Елена Кузнецова',
       date: '12 октября',
+      dateValue: '2024-10-12',
       readTime: '6 мин',
+      views: 2100,
       tags: ['маркетинг', 'продвижение'],
       image: '🎯'
     },
@@ -57,7 +64,9 @@ const Journal = () => {
       title: 'Как перейти с ИП на самозанятость',
       author: 'Дмитрий Соколов',
       date: '8 октября',
+      dateValue: '2024-10-08',
       readTime: '7 мин',
+      views: 1560,
       tags: ['переход', 'ИП'],
       image: '🔄'
     },
@@ -65,7 +74,9 @@ const Journal = () => {
       title: 'Юридические аспекты работы с самозанятыми',
       author: 'Анна Волкова',
       date: '5 октября',
+      dateValue: '2024-10-05',
       readTime: '10 мин',
+      views: 760,
       tags: ['право', 'договоры'],
       image: '⚖️'
     },
@@ -73,7 +84,9 @@ const Journal = () => {
       title: 'Как найти первых клиентов самозанятому',
       author: 'Петр Иванов',
       date: '1 октября',
+      dateValue: '2024-10-01',
       readTime: '6 мин',
+      views: 1820,
       tags: ['клиенты', 'начало'],
       image: '🎯'
     }
@@ -115,7 +128,8 @@ const Journal = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mb-8 gap-3 flex-wrap">
+        <div className="flex justify-center items-center mb-8 gap-6 flex-wrap">
+          <div className="flex gap-3 flex-wrap">
           {categories.map((category) => {
             const count = category === 'Все' ? articles.length : articles.filter((article) => 
               article.tags.some(tag => {
@@ -143,6 +157,27 @@ const Journal = () => {
               </Button>
             );
           })}
+          </div>
+          
+          <div className="flex items-center gap-2 border-l pl-6">
+            <span className="text-sm text-muted-foreground">Сортировка:</span>
+            <Button
+              variant={sortBy === 'date' ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy('date')}
+              className="rounded-full"
+            >
+              По дате
+            </Button>
+            <Button
+              variant={sortBy === 'popular' ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy('popular')}
+              className="rounded-full"
+            >
+              По популярности
+            </Button>
+          </div>
         </div>
 
         <section className="mb-24">
@@ -165,6 +200,13 @@ const Journal = () => {
                   });
                 
                 return matchesSearch && matchesCategory;
+              })
+              .sort((a, b) => {
+                if (sortBy === 'date') {
+                  return new Date(b.dateValue).getTime() - new Date(a.dateValue).getTime();
+                } else {
+                  return b.views - a.views;
+                }
               })
               .map((article, index) => (
                 <Card

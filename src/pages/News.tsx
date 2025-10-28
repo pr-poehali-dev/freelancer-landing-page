@@ -12,6 +12,7 @@ const News = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Все');
+  const [sortBy, setSortBy] = useState('date');
 
   const categories = ['Все', 'Налоги', 'Законодательство', 'Финансы', 'Статистика', 'Карьера'];
 
@@ -32,58 +33,74 @@ const News = () => {
     {
       id: 1,
       date: '25 октября 2024',
+      dateValue: '2024-10-25',
       title: 'Новые налоговые льготы для самозанятых в 2024',
       excerpt: 'Правительство утвердило расширение льгот для самозанятых граждан. Теперь доступны дополнительные вычеты...',
-      category: 'Налоги'
+      category: 'Налоги',
+      views: 3450
     },
     {
       id: 2,
       date: '20 октября 2024',
+      dateValue: '2024-10-20',
       title: 'Количество самозанятых превысило 8 миллионов',
       excerpt: 'По данным ФНС, число зарегистрированных самозанятых в России достигло рекордных значений...',
-      category: 'Статистика'
+      category: 'Статистика',
+      views: 2890
     },
     {
       id: 3,
       date: '15 октября 2024',
+      dateValue: '2024-10-15',
       title: 'Как правильно работать с иностранными заказчиками',
       excerpt: 'Новые правила для самозанятых при работе с зарубежными клиентами. Разбираем все нюансы...',
-      category: 'Инструкции'
+      category: 'Инструкции',
+      views: 1670
     },
     {
       id: 4,
       date: '10 октября 2024',
+      dateValue: '2024-10-10',
       title: 'Изменения в налоговом законодательстве с 2025 года',
       excerpt: 'Минфин подготовил изменения в налоговое законодательство, касающиеся самозанятых граждан...',
-      category: 'Законодательство'
+      category: 'Законодательство',
+      views: 4120
     },
     {
       id: 5,
       date: '5 октября 2024',
+      dateValue: '2024-10-05',
       title: 'Самозанятые смогут получать больничные',
       excerpt: 'Рассматривается законопроект о добровольном медицинском страховании для самозанятых...',
-      category: 'Новости'
+      category: 'Новости',
+      views: 2340
     },
     {
       id: 6,
       date: '1 октября 2024',
+      dateValue: '2024-10-01',
       title: 'Топ-10 профессий для самозанятых в 2024',
       excerpt: 'Эксперты определили самые востребованные и высокооплачиваемые профессии среди самозанятых...',
-      category: 'Карьера'
+      category: 'Карьера',
+      views: 5230
     },
     {
       id: 7,
       date: '25 сентября 2024',
+      dateValue: '2024-09-25',
       title: 'Как избежать блокировки счета самозанятого',
       excerpt: 'ЦБ усилил контроль за финансовыми операциями. Рассказываем, как не попасть под блокировку...',
-      category: 'Финансы'
+      category: 'Финансы',
+      views: 3780
     },
     {
       id: 8,
       date: '20 сентября 2024',
+      dateValue: '2024-09-20',
       title: 'Самозанятость и пенсия: что нужно знать',
       excerpt: 'Разбираем, как самозанятость влияет на будущую пенсию и что можно сделать для её увеличения...',
-      category: 'Пенсии'
+      category: 'Пенсии',
+      views: 1920
     }
   ];
 
@@ -123,7 +140,8 @@ const News = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mb-8 gap-3 flex-wrap">
+        <div className="flex justify-center items-center mb-8 gap-6 flex-wrap">
+          <div className="flex gap-3 flex-wrap">
           {categories.map((category) => {
             const count = category === 'Все' ? newsItems.length : newsItems.filter((news) => news.category === category).length;
             
@@ -142,6 +160,27 @@ const News = () => {
               </Button>
             );
           })}
+          </div>
+          
+          <div className="flex items-center gap-2 border-l pl-6">
+            <span className="text-sm text-muted-foreground">Сортировка:</span>
+            <Button
+              variant={sortBy === 'date' ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy('date')}
+              className="rounded-full"
+            >
+              По дате
+            </Button>
+            <Button
+              variant={sortBy === 'popular' ? "default" : "outline"}
+              size="sm"
+              onClick={() => setSortBy('popular')}
+              className="rounded-full"
+            >
+              По популярности
+            </Button>
+          </div>
         </div>
 
         <section className="mb-24">
@@ -156,6 +195,13 @@ const News = () => {
                 const matchesCategory = selectedCategory === 'Все' || news.category === selectedCategory;
                 
                 return matchesSearch && matchesCategory;
+              })
+              .sort((a, b) => {
+                if (sortBy === 'date') {
+                  return new Date(b.dateValue).getTime() - new Date(a.dateValue).getTime();
+                } else {
+                  return b.views - a.views;
+                }
               })
               .map((news) => (
                 <Card
