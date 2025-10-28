@@ -14,9 +14,13 @@ const Journal = () => {
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [sortBy, setSortBy] = useState('date');
   const [readTimeFilter, setReadTimeFilter] = useState('Все');
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   const categories = ['Все', 'Новичкам', 'Бухгалтерия', 'Маркетинг', 'Право', 'Клиенты'];
   const readTimeOptions = ['Все', 'Быстрое (<5 мин)', 'Среднее (5-8 мин)', 'Долгое (>8 мин)'];
+
+  const minSwipeDistance = 50;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +33,33 @@ const Journal = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+    
+    const currentIndex = categories.indexOf(selectedCategory);
+    
+    if (isLeftSwipe && currentIndex < categories.length - 1) {
+      setSelectedCategory(categories[currentIndex + 1]);
+    }
+    
+    if (isRightSwipe && currentIndex > 0) {
+      setSelectedCategory(categories[currentIndex - 1]);
+    }
   };
 
   const articles = [
@@ -130,6 +161,14 @@ const Journal = () => {
           </div>
         </div>
 
+        {/* Подсказка о свайпе для мобильных */}
+        <div className="lg:hidden text-center mb-4">
+          <p className="text-xs text-muted-foreground flex items-center justify-center gap-2">
+            <Icon name="MoveHorizontal" size={16} className="text-primary animate-pulse" />
+            Свайпайте влево/вправо для переключения категорий
+          </p>
+        </div>
+
         <div className="flex justify-center items-center mb-6 sm:mb-8 gap-3 sm:gap-6 flex-wrap">
           <div className="flex gap-2 sm:gap-3 flex-wrap justify-center">
           {categories.map((category) => {
@@ -229,7 +268,7 @@ const Journal = () => {
           )}
         </div>
 
-        <section className="mb-24">
+        <section className="mb-24" onTouchStart={onTouchStart} onTouchMove={onTouchMove} onTouchEnd={onTouchEnd}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles
               .filter((article) => {
