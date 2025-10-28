@@ -13,8 +13,10 @@ const Journal = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState('Все');
   const [sortBy, setSortBy] = useState('date');
+  const [readTimeFilter, setReadTimeFilter] = useState('Все');
 
   const categories = ['Все', 'Новичкам', 'Бухгалтерия', 'Маркетинг', 'Право', 'Клиенты'];
+  const readTimeOptions = ['Все', 'Быстрое (<5 мин)', 'Среднее (5-8 мин)', 'Долгое (>8 мин)'];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -180,6 +182,35 @@ const Journal = () => {
           </div>
         </div>
 
+        <div className="flex justify-center mb-8 gap-3 flex-wrap items-center">
+          <span className="text-sm text-muted-foreground font-medium">Время чтения:</span>
+          {readTimeOptions.map((option) => {
+            const count = option === 'Все' ? articles.length : articles.filter((article) => {
+              const time = parseInt(article.readTime);
+              if (option === 'Быстрое (<5 мин)') return time < 5;
+              if (option === 'Среднее (5-8 мин)') return time >= 5 && time <= 8;
+              if (option === 'Долгое (>8 мин)') return time > 8;
+              return false;
+            }).length;
+            
+            return (
+              <Button
+                key={option}
+                variant={readTimeFilter === option ? "default" : "outline"}
+                size="sm"
+                onClick={() => setReadTimeFilter(option)}
+                className={`rounded-full transition-all ${
+                  readTimeFilter === option
+                    ? 'bg-secondary text-white shadow-lg'
+                    : 'hover:bg-secondary/10'
+                }`}
+              >
+                {option} ({count})
+              </Button>
+            );
+          })}
+        </div>
+
         <section className="mb-24">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {articles
@@ -199,7 +230,15 @@ const Journal = () => {
                     return false;
                   });
                 
-                return matchesSearch && matchesCategory;
+                const matchesReadTime = readTimeFilter === 'Все' || (() => {
+                  const time = parseInt(article.readTime);
+                  if (readTimeFilter === 'Быстрое (<5 мин)') return time < 5;
+                  if (readTimeFilter === 'Среднее (5-8 мин)') return time >= 5 && time <= 8;
+                  if (readTimeFilter === 'Долгое (>8 мин)') return time > 8;
+                  return false;
+                })();
+                
+                return matchesSearch && matchesCategory && matchesReadTime;
               })
               .sort((a, b) => {
                 if (sortBy === 'date') {
@@ -259,7 +298,15 @@ const Journal = () => {
                 return false;
               });
             
-            return matchesSearch && matchesCategory;
+            const matchesReadTime = readTimeFilter === 'Все' || (() => {
+              const time = parseInt(article.readTime);
+              if (readTimeFilter === 'Быстрое (<5 мин)') return time < 5;
+              if (readTimeFilter === 'Среднее (5-8 мин)') return time >= 5 && time <= 8;
+              if (readTimeFilter === 'Долгое (>8 мин)') return time > 8;
+              return false;
+            })();
+            
+            return matchesSearch && matchesCategory && matchesReadTime;
           }).length === 0 && (
             <div className="text-center py-12">
               <p className="text-xl text-muted-foreground">По вашему запросу ничего не найдено</p>
