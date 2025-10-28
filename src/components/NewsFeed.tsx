@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { motion } from 'framer-motion';
 
 interface NewsItem {
   id: number;
@@ -22,6 +23,13 @@ const NewsFeed = ({ newsItems }: NewsFeedProps) => {
       {/* Декоративные элементы */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-full -translate-y-1/2 translate-x-1/2 opacity-50"></div>
       <div className="absolute bottom-0 left-0 w-24 h-24 bg-blue-100 rounded-full translate-y-1/2 -translate-x-1/2 opacity-50"></div>
+      <motion.img 
+        src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/f3b15b18-c546-4038-9a62-1f1dd8dc7104.jpg"
+        alt="Релакс фрилансера"
+        className="absolute bottom-8 right-8 w-24 h-24 object-contain opacity-20 z-0"
+        animate={{ rotate: [0, 5, -5, 0], scale: [1, 1.05, 1] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
       
       <div className="relative z-10 flex-1 flex flex-col">
         <div className="flex items-center justify-between mb-8">

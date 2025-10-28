@@ -47,7 +47,14 @@ const AboutSection = () => {
             <CardHeader>
               <CardTitle className="text-3xl">Кто такой самозанятый?</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4 text-lg leading-relaxed">
+            <CardContent className="space-y-4 text-lg leading-relaxed relative">
+              <motion.img 
+                src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/e983ed7f-f562-4b16-a501-6e810b55f420.jpg"
+                alt="Успешный фрилансер"
+                className="absolute -top-4 right-4 w-24 h-24 object-contain opacity-30"
+                animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
+                transition={{ duration: 4, repeat: Infinity }}
+              />
               <p>
                 Самозанятый — это физическое лицо, которое работает на себя и платит налог на профессиональный доход (НПД). 
                 Это специальный налоговый режим для тех, кто оказывает услуги или продаёт товары собственного производства.
@@ -120,7 +127,14 @@ const AboutSection = () => {
                   </p>
                 </motion.div>
               </div>
-              <div className="bg-blue-50 rounded-2xl p-6">
+              <div className="bg-blue-50 rounded-2xl p-6 relative overflow-hidden">
+                <motion.div 
+                  className="absolute top-2 right-2 text-4xl"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                >
+                  🎁
+                </motion.div>
                 <h4 className="font-semibold text-xl mb-3 flex items-center gap-2">
                   <Icon name="Gift" size={24} className="text-primary" />
                   Налоговый вычет
@@ -135,11 +149,18 @@ const AboutSection = () => {
         </TabsContent>
 
         <TabsContent value="benefits" className="mt-8">
-          <Card className="border-2 border-primary/20 shadow-xl rounded-3xl">
-            <CardHeader>
+          <Card className="border-2 border-primary/20 shadow-xl rounded-3xl relative overflow-hidden">
+            <motion.img 
+              src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9666690d-cf4e-45c1-84cc-0be24091def6.jpg"
+              alt="Супергерой налогов"
+              className="absolute top-4 right-4 w-32 h-32 object-contain opacity-20 z-0"
+              animate={{ scale: [1, 1.1, 1], rotate: [-5, 5, -5] }}
+              transition={{ duration: 5, repeat: Infinity }}
+            />
+            <CardHeader className="relative z-10">
               <CardTitle className="text-3xl">Преимущества статуса</CardTitle>
             </CardHeader>
-            <CardContent>
+            <CardContent className="relative z-10">
               <div className="grid gap-4">
                 {[
                   { icon: 'Smartphone', title: 'Простая регистрация', desc: 'За 15 минут через приложение «Мой налог»' },
@@ -177,11 +198,18 @@ const AboutSection = () => {
         </TabsContent>
 
         <TabsContent value="limits" className="mt-8">
-          <Card className="border-2 border-primary/20 shadow-xl rounded-3xl">
-            <CardHeader>
+          <Card className="border-2 border-primary/20 shadow-xl rounded-3xl relative overflow-hidden">
+            <motion.img 
+              src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/f2251236-c3ca-4526-916c-a425722ea896.jpg"
+              alt="Жонглирующий фрилансер"
+              className="absolute bottom-4 right-4 w-32 h-32 object-contain opacity-15 z-0"
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
+            <CardHeader className="relative z-10">
               <CardTitle className="text-3xl">Ограничения и запреты</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-4 relative z-10">
               {[
                 { 
                   icon: 'Users', 
@@ -204,15 +232,27 @@ const AboutSection = () => {
                   desc: 'Нельзя совмещать с ИП, ООО или работой по трудовому договору в той же сфере' 
                 }
               ].map((limit, idx) => (
-                <div key={idx} className="flex items-start gap-4 p-5 bg-orange-50 rounded-2xl border-2 border-orange-200">
-                  <div className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0">
+                <motion.div 
+                  key={idx}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.1 }}
+                  whileHover={{ scale: 1.02 }}
+                  className="flex items-start gap-4 p-5 bg-orange-50 rounded-2xl border-2 border-orange-200"
+                >
+                  <motion.div 
+                    whileHover={{ rotate: [0, -10, 10, 0] }}
+                    transition={{ duration: 0.5 }}
+                    className="w-12 h-12 bg-orange-500 rounded-xl flex items-center justify-center flex-shrink-0"
+                  >
                     <Icon name={limit.icon as any} className="text-white" size={24} />
-                  </div>
+                  </motion.div>
                   <div>
                     <p className="font-semibold text-lg mb-1">{limit.title}</p>
                     <p className="text-muted-foreground">{limit.desc}</p>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </CardContent>
           </Card>

@@ -49,17 +49,13 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <motion.div 
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="w-48 h-48"
-            >
+            <div className="w-48 h-48">
               <img 
                 src="https://cdn.poehali.dev/files/05a57aaa-2097-4bf1-bcc9-8a05f9b76d3f.png" 
                 alt="Логотип" 
                 className="w-full h-full object-contain"
               />
-            </motion.div>
+            </div>
           </div>
 
           <div className="bg-white rounded-3xl p-6 shadow-lg">
@@ -97,24 +93,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="text-center pt-8 border-t border-gray-200 relative">
-          <motion.img 
-            src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/775ac872-d6e1-4a8d-942f-f81775801bf4.jpg"
-            alt="Думающий персонаж"
-            className="absolute left-1/4 -top-8 w-20 h-20 object-contain opacity-50"
-            animate={{ rotate: [0, -10, 10, 0] }}
-            transition={{ duration: 4, repeat: Infinity }}
-          />
+        <div className="text-center pt-8 border-t border-gray-200">
           <p className="text-muted-foreground">
             © 2024 Я - самозанятый. Информационный портал для самозанятых граждан
           </p>
-          <motion.img 
-            src="https://cdn.poehali.dev/projects/303552be-1b66-4b75-b6fd-00b501d98681/files/9cac1bba-d0ee-483e-9767-54bb6a5942da.jpg"
-            alt="Веселый фрилансер"
-            className="absolute right-1/4 -top-8 w-20 h-20 object-contain opacity-50"
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 3, repeat: Infinity }}
-          />
         </div>
       </div>
     </footer>
