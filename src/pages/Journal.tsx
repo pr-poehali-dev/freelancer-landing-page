@@ -182,33 +182,51 @@ const Journal = () => {
           </div>
         </div>
 
-        <div className="flex justify-center mb-8 gap-3 flex-wrap items-center">
-          <span className="text-sm text-muted-foreground font-medium">Время чтения:</span>
-          {readTimeOptions.map((option) => {
-            const count = option === 'Все' ? articles.length : articles.filter((article) => {
-              const time = parseInt(article.readTime);
-              if (option === 'Быстрое (<5 мин)') return time < 5;
-              if (option === 'Среднее (5-8 мин)') return time >= 5 && time <= 8;
-              if (option === 'Долгое (>8 мин)') return time > 8;
-              return false;
-            }).length;
-            
-            return (
-              <Button
-                key={option}
-                variant={readTimeFilter === option ? "default" : "outline"}
-                size="sm"
-                onClick={() => setReadTimeFilter(option)}
-                className={`rounded-full transition-all ${
-                  readTimeFilter === option
-                    ? 'bg-secondary text-white shadow-lg'
-                    : 'hover:bg-secondary/10'
-                }`}
-              >
-                {option} ({count})
-              </Button>
-            );
-          })}
+        <div className="flex justify-center mb-8 gap-6 flex-wrap items-center">
+          <div className="flex gap-3 flex-wrap items-center">
+            <span className="text-sm text-muted-foreground font-medium">Время чтения:</span>
+            {readTimeOptions.map((option) => {
+              const count = option === 'Все' ? articles.length : articles.filter((article) => {
+                const time = parseInt(article.readTime);
+                if (option === 'Быстрое (<5 мин)') return time < 5;
+                if (option === 'Среднее (5-8 мин)') return time >= 5 && time <= 8;
+                if (option === 'Долгое (>8 мин)') return time > 8;
+                return false;
+              }).length;
+              
+              return (
+                <Button
+                  key={option}
+                  variant={readTimeFilter === option ? "default" : "outline"}
+                  size="sm"
+                  onClick={() => setReadTimeFilter(option)}
+                  className={`rounded-full transition-all ${
+                    readTimeFilter === option
+                      ? 'bg-secondary text-white shadow-lg'
+                      : 'hover:bg-secondary/10'
+                  }`}
+                >
+                  {option} ({count})
+                </Button>
+              );
+            })}
+          </div>
+          
+          {(selectedCategory !== 'Все' || readTimeFilter !== 'Все' || sortBy !== 'date') && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                setSelectedCategory('Все');
+                setReadTimeFilter('Все');
+                setSortBy('date');
+              }}
+              className="rounded-full border-2 border-primary/30 hover:bg-primary hover:text-white transition-all gap-2"
+            >
+              <Icon name="RotateCcw" size={16} />
+              Сбросить фильтры
+            </Button>
+          )}
         </div>
 
         <section className="mb-24">

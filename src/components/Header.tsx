@@ -1,7 +1,20 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import Icon from '@/components/ui/icon';
 
 const Header = () => {
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      window.location.href = `/journal?search=${encodeURIComponent(searchQuery)}`;
+    }
+  };
+
   return (
     <>
       <div className="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent z-50 animate-gradient bg-[length:200%_200%]" />
@@ -36,6 +49,36 @@ const Header = () => {
               </div>
               <Link to="/journal" className="text-primary hover:text-orange-500 hover:underline transition-all">Журнал для самозанятых</Link>
               <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны документов</Link>
+              
+              <div className="relative">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                  className="hover:bg-primary/10 transition-all"
+                >
+                  <Icon name="Search" size={20} />
+                </Button>
+                
+                {searchOpen && (
+                  <div className="absolute top-full right-0 mt-2 w-80 bg-white rounded-2xl shadow-2xl border-2 border-primary/10 p-4 animate-fade-in">
+                    <form onSubmit={handleSearch}>
+                      <div className="relative">
+                        <Icon name="Search" className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" size={18} />
+                        <Input
+                          type="text"
+                          placeholder="Поиск по сайту..."
+                          value={searchQuery}
+                          onChange={(e) => setSearchQuery(e.target.value)}
+                          className="pl-10 rounded-xl border-2 focus:border-primary"
+                          autoFocus
+                        />
+                      </div>
+                    </form>
+                  </div>
+                )}
+              </div>
+              
               <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
                 Войти
               </Button>
