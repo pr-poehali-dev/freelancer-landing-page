@@ -2,7 +2,6 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsFeed from '@/components/NewsFeed';
 import ArticlesGallery from '@/components/ArticlesGallery';
-import AboutSection from '@/components/AboutSection';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 const Index = () => {
@@ -152,14 +151,7 @@ const Index = () => {
           </div>
         </motion.section>
 
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.7 }}
-        >
-          <AboutSection />
-        </motion.div>
+
       </main>
 
       <Footer />

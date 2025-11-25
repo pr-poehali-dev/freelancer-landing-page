@@ -48,6 +48,9 @@ const Header = () => {
               </span>
             </Link>
             <div className="flex gap-6 items-center">
+              <Link to="/status" className="text-primary hover:text-orange-500 hover:underline transition-all">
+                Самозанятый - кто это?
+              </Link>
               <a href="#registration" className="text-primary hover:text-orange-500 hover:underline transition-all">
                 Регистрация
               </a>
@@ -55,8 +58,8 @@ const Header = () => {
                 Налоги
               </a>
               <Link to="/journal" className="text-primary hover:text-orange-500 hover:underline transition-all">Журнал</Link>
-              <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны</Link>
               <Link to="/dictionary" className="text-primary hover:text-orange-500 hover:underline transition-all">Словарь</Link>
+              <Link to="/templates" className="text-primary hover:text-orange-500 hover:underline transition-all">Шаблоны</Link>
               
               <div className="relative">
                 <Button
