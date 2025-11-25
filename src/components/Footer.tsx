@@ -49,13 +49,17 @@ const Footer = () => {
           </div>
 
           <div className="flex flex-col items-center justify-center">
-            <div className="w-48 h-48">
+            <motion.div 
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="w-48 h-48"
+            >
               <img 
                 src="https://cdn.poehali.dev/files/05a57aaa-2097-4bf1-bcc9-8a05f9b76d3f.png" 
                 alt="Логотип" 
                 className="w-full h-full object-contain"
               />
-            </div>
+            </motion.div>
           </div>
 
           <div className="bg-white rounded-3xl p-6 shadow-lg">
