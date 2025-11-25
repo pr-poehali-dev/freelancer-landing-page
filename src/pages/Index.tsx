@@ -129,7 +129,6 @@ const Index = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.7, delay: 0.2 }}
-          className="mb-24"
         >
           <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-8">
             <motion.div
